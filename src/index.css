@@ -1,0 +1,1970 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+/*
+! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
+*/
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: solid;
+  /* 2 */
+  border-color: #e5e7eb;
+  /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+*/
+
+html {
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -moz-tab-size: 4;
+  /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4;
+  /* 3 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 4 */
+  font-feature-settings: normal;
+  /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font family by default.
+2. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
+}
+
+*, ::before, ::after{
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::backdrop{
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+.container{
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 640px){
+  .container{
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px){
+  .container{
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px){
+  .container{
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px){
+  .container{
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px){
+  .container{
+    max-width: 1536px;
+  }
+}
+
+.demotextFontSM{
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.txt-gradient2{
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-from: #8500FF var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(133 0 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-from-position: 10%;
+  --tw-gradient-to: rgb(43 94 233 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #2B5EE9 var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-via-position: 20%;
+  --tw-gradient-to: #1e3a8a var(--tw-gradient-to-position);
+  --tw-gradient-to-position: 60%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+.card{
+  border-radius: 10px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(46 16 101 / var(--tw-bg-opacity));
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.gradiantBG{
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+  --tw-gradient-from: rgb(139 92 246 / 0) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(139 92 246 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: rgb(76 29 149 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(76 29 149 / .90) var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-to: rgb(76 29 149 / 0) var(--tw-gradient-to-position);
+}
+
+.visible{
+  visibility: visible;
+}
+
+.static{
+  position: static;
+}
+
+.fixed{
+  position: fixed;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.relative{
+  position: relative;
+}
+
+.bottom-0{
+  bottom: 0px;
+}
+
+.left-0{
+  left: 0px;
+}
+
+.clear-both{
+  clear: both;
+}
+
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mb-1{
+  margin-bottom: 0.25rem;
+}
+
+.mb-20{
+  margin-bottom: 5rem;
+}
+
+.mb-4{
+  margin-bottom: 1rem;
+}
+
+.ml-2{
+  margin-left: 0.5rem;
+}
+
+.mr-2{
+  margin-right: 0.5rem;
+}
+
+.mt-10{
+  margin-top: 2.5rem;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.flex{
+  display: flex;
+}
+
+.grid{
+  display: grid;
+}
+
+.hidden{
+  display: none;
+}
+
+.h-14{
+  height: 3.5rem;
+}
+
+.h-32{
+  height: 8rem;
+}
+
+.min-h-\[130px\]{
+  min-height: 130px;
+}
+
+.min-h-\[350px\]{
+  min-height: 350px;
+}
+
+.min-h-\[450px\]{
+  min-height: 450px;
+}
+
+.w-11{
+  width: 2.75rem;
+}
+
+.w-14{
+  width: 3.5rem;
+}
+
+.w-16{
+  width: 4rem;
+}
+
+.w-full{
+  width: 100%;
+}
+
+.flex-none{
+  flex: none;
+}
+
+.grow{
+  flex-grow: 1;
+}
+
+.basis-1\/4{
+  flex-basis: 25%;
+}
+
+.transform{
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.resize-none{
+  resize: none;
+}
+
+.resize{
+  resize: both;
+}
+
+.flex-row{
+  flex-direction: row;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
+.content-center{
+  align-content: center;
+}
+
+.items-end{
+  align-items: flex-end;
+}
+
+.items-center{
+  align-items: center;
+}
+
+.justify-start{
+  justify-content: flex-start;
+}
+
+.justify-items-center{
+  justify-items: center;
+}
+
+.gap-4{
+  gap: 1rem;
+}
+
+.gap-5{
+  gap: 1.25rem;
+}
+
+.overflow-hidden{
+  overflow: hidden;
+}
+
+.rounded{
+  border-radius: 0.25rem;
+}
+
+.rounded-\[7px\]{
+  border-radius: 7px;
+}
+
+.rounded-full{
+  border-radius: 9999px;
+}
+
+.rounded-lg{
+  border-radius: 0.5rem;
+}
+
+.border{
+  border-width: 1px;
+}
+
+.border-0{
+  border-width: 0px;
+}
+
+.border-gray-300{
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.bg-indigo-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+}
+
+.bg-\[url\(\'\/biswajit\.jpg\'\)\]{
+  background-image: url('/biswajit.jpg');
+}
+
+.bg-\[url\(\'\/prosenjit\.jpg\'\)\]{
+  background-image: url('/prosenjit.jpg');
+}
+
+.p-10{
+  padding: 2.5rem;
+}
+
+.p-2{
+  padding: 0.5rem;
+}
+
+.p-3{
+  padding: 0.75rem;
+}
+
+.p-\[10px\]{
+  padding: 10px;
+}
+
+.px-3{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.px-5{
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.px-6{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.py-1{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.py-2{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-24{
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.py-52{
+  padding-top: 13rem;
+  padding-bottom: 13rem;
+}
+
+.pl-10{
+  padding-left: 2.5rem;
+}
+
+.pl-12{
+  padding-left: 3rem;
+}
+
+.pl-5{
+  padding-left: 1.25rem;
+}
+
+.pr-5{
+  padding-right: 1.25rem;
+}
+
+.pt-10{
+  padding-top: 2.5rem;
+}
+
+.pt-4{
+  padding-top: 1rem;
+}
+
+.pt-9{
+  padding-top: 2.25rem;
+}
+
+.pt-5{
+  padding-top: 1.25rem;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-\[15px\]{
+  font-size: 15px;
+}
+
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-lg{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.font-bold{
+  font-weight: 700;
+}
+
+.font-medium{
+  font-weight: 500;
+}
+
+.font-semibold{
+  font-weight: 600;
+}
+
+.leading-6{
+  line-height: 1.5rem;
+}
+
+.leading-7{
+  line-height: 1.75rem;
+}
+
+.leading-8{
+  line-height: 2rem;
+}
+
+.leading-\[95px\]{
+  line-height: 95px;
+}
+
+.leading-relaxed{
+  line-height: 1.625;
+}
+
+.tracking-\[\.35em\]{
+  letter-spacing: .35em;
+}
+
+.tracking-widest{
+  letter-spacing: 0.1em;
+}
+
+.text-gray-100{
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
+}
+
+.text-gray-200{
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+
+.text-gray-600{
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.text-gray-700{
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.text-gray-900{
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.shadow-md{
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.outline-none{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.transition{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-colors{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-200{
+  transition-duration: 200ms;
+}
+
+.ease-in-out{
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* .line-gradint {
+    box-sizing: content-box;
+    background: rgba(0,0,0,0.01);  
+    border-image-slice:1;  
+    border-style: solid;
+    border-image-width:1px;
+    border-image-source: bg-gradient-to-bl(to top, #305AE7, #0500FF, #7A24CE );
+    border-image-repeat:no-repeat;
+
+  } */
+
+section{
+  min-height:100vh;
+}
+
+.main-box{
+  margin: auto;
+  position: relative;
+  width: 1200px;
+  height: 1200px;
+  border-radius: 1000px;
+}
+
+.smal-box{
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  margin: 50px;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #000;
+  transition: background 0.5s;
+}
+
+.smal-box Canvas{
+  opacity:0;
+  background: #000;
+  transition: opacity 0.3s,  background 0.5s;
+}
+
+.count3 Canvas{
+  width: 300px;
+  height: 500px;
+}
+
+.smal-box:hover Canvas{
+  opacity: 1;
+  background: #000;
+  transition: opacity 0.3s, background 0.6s;
+}
+
+.card-header{
+  position: fixed;
+  top: 50px;
+  left: 25px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.small-canvas{
+  width: 200px;
+  height: 350px;
+}
+
+/* .count3 Canvas{	width: 300px; height: 500px;   } */
+
+.count1{
+  transform: rotate(0deg);
+  left:38%;
+  top:-2%;
+  border-color:chartreuse ;
+}
+
+.count2{
+  transform: rotate(45deg);
+  left:62.5%;
+  top:8.5%;
+  border-color:blueviolet ;
+}
+
+.count3{
+  transform: rotate(90deg);
+  right:2%;
+  top:33%;
+  border-color:brown ;
+}
+
+.count4{
+  transform: rotate(135deg);
+  left:63%;
+  top:58%;
+  border-color:burlywood ;
+}
+
+.count5{
+  transform: rotate(180deg);
+  left:38%;
+  bottom: -2%;
+  border-color:blue ;
+}
+
+.count6{
+  transform: rotate(225deg);
+  left:12%;
+  top:58%;
+  border-color:chocolate ;
+}
+
+.count7{
+  transform: rotate(270deg);
+  left:2%;
+  top:33%;
+  border-color:cyan ;
+}
+
+.count8{
+  transform: rotate(315deg);
+  left:13%;
+  top:8%;
+  border-color:darkmagenta ;
+}
+
+.contac-form, .contac-form p, .contac-form b, .contac-form label  {
+  color: #0500FF;
+}
+
+.contac-form input, .contac-form textarea {
+  background: transparent;
+  border: 1px solid #0500FF;
+}
+
+body::-webkit-scrollbar{
+  display: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* .menu{ position: absolute; width: 50%; height: 100%; background-color:#fff; right: 0; top: 0; border: 1px solid red; z-index: 999;
+  animation: slideInRight 0.5s ease-in-out;  
+}
+
+
+.icon-bg{ width: 552px; height: 552px; position:absolute; right: 25px; top: 25px; background-color: #7A24CE; border-radius: 50px;}
+
+
+
+.menu-icon{ width: 50px; height: 50px; position:absolute; right: 25px; top: 25px; background-color: #00C853; border-radius: 50px; transition: background-color 0.3s ease-in-out;}
+.menu-icon:hover {
+  background-color: #009624;  
+} */
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  transition: width 1s ease-in-out, height 1s ease-in-out;
+  /* Opening time: 5 seconds */
+}
+
+.menu.expanded {
+  width:100%;
+  height: 100%;
+}
+
+.icon-bg {
+  width:0px;
+  height:100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #7A24CE;
+  transition: width 1s ease-in-out, height 1s ease-in-out, background-color 1s ease-in-out;
+  /* Opening time: 5 seconds */
+}
+
+.menu.expanded .icon-bg {
+  width: 50vw;
+  height:100vh;
+  position: absolute;
+  right:0;
+  top: 0;
+  transition: width 1s ease-in-out, height 1s ease-in-out;
+  /* Closing time: 3 seconds */
+}
+
+.icon-menu {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right:10px;
+  top: 10px;
+  background-color: #7A24CE;
+  border-radius: 50px;
+  color: #fff;
+  display: flex;
+  cursor: pointer;
+  line-height: 3;
+  z-index: 9;
+}
+
+.icon-menu:hover {
+  background-color: #7A24CE;
+  z-index: 9;
+}
+
+.menuInside  {
+  text-align: left;
+  font-size: 40px;
+  line-height: 2;
+  font-weight: 600;
+  height: 100vh;
+  background-color: #000;
+}
+
+/* .menuInside h2 {
+  font-size: 6em;
+  font-weight: 500;
+  color: #222;
+  letter-spacing: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.menuInside h2:hover {
+  color: #fff;
+  text-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+} */
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgba(122, 36, 206, 0.7);
+    /* Adjust color and shadow as needed */
+  }
+
+  to {
+    text-shadow: none;
+  }
+}
+
+.nav-line {
+  color: #fff;
+}
+
+.nav-line:hover {
+  color: #57009e;
+}
+
+.oferRow{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.menu-line{
+  height: 1px;
+  width: 100%;
+  background-color: #48005A;
+}
+
+.offer-text{
+  font-size: 60px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.text {
+  fill: url(#p-stars);
+  stroke: #551F7A;
+  stroke-width: 3;
+}
+
+/* Colorize & animate pattern */
+
+.g-stars polygon {
+  stroke-width: 0;
+  animation: stroke 2s infinite;
+}
+
+.g-stars polygon:nth-child(5n + 1) {
+  fill: #551F7A;
+  stroke: #551F7A;
+  animation-delay: -0.4s;
+}
+
+.g-stars polygon:nth-child(5n + 2) {
+  fill: #BA2799;
+  stroke: #BA2799;
+  animation-delay: -0.8s;
+}
+
+.g-stars polygon:nth-child(5n + 3) {
+  fill: #D9587A;
+  stroke: #D9587A;
+  animation-delay: -1.2s;
+}
+
+.g-stars polygon:nth-child(5n + 4) {
+  fill: #FFDD00;
+  stroke: #FFDD00;
+  animation-delay: -1.6s;
+}
+
+.g-stars polygon:nth-child(5n + 5) {
+  fill: #FFF3A1;
+  stroke: #FFF3A1;
+  animation-delay: -2s;
+}
+
+/* Change stroke-width within animation */
+
+@keyframes stroke {
+  50% {
+    stroke-width: 8;
+  }
+}
+
+.footer{
+  font-size: 22px;
+  color: #fff;
+}
+
+.tech-logo img{
+  height: 45px;
+  width: 45px;
+}
+
+.lineOfferMidle{
+  height: 1px;
+  background-color: #551F7A;
+  width: 100%;
+  opacity: 1;
+}
+
+#LogoSVG path:nth-child(1) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+}
+
+#LogoSVG:hover path:nth-child(1) {
+  stroke-dasharray: 130px;
+  fill: #fff;
+}
+
+#LogoSVG path:nth-child(2) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+  animation-delay: 0.6s;
+}
+
+#LogoSVG:hover path:nth-child(2) {
+  stroke-dasharray: 130px;
+  fill: #fff;
+}
+
+#LogoSVG path:nth-child(3) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+}
+
+#LogoSVG:hover path:nth-child(3) {
+  stroke-dasharray: 100px;
+  /* Modify this value as needed */
+  fill: #fff;
+  /* Modify this color as needed */
+}
+
+#LogoSVG path:nth-child(4) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+}
+
+#LogoSVG:hover path:nth-child(4) {
+  stroke-dasharray: 100px;
+  /* Modify this value as needed */
+  fill: #fff;
+  /* Modify this color as needed */
+}
+
+#LogoSVG path:nth-child(5) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+}
+
+#LogoSVG:hover path:nth-child(5) {
+  stroke-dasharray: 100px;
+  /* Modify this value as needed */
+  fill: #fff;
+  /* Modify this color as needed */
+}
+
+#LogoSVG path:nth-child(6) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+}
+
+#LogoSVG:hover path:nth-child(6) {
+  stroke-dasharray: 100px;
+  /* Modify this value as needed */
+  fill: #fff;
+  /* Modify this color as needed */
+}
+
+#LogoSVG path:nth-child(7) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+  animation-delay: 0.6s;
+}
+
+#LogoSVG:hover path:nth-child(7) {
+  stroke-dasharray: 100px;
+  /* Modify this value as needed */
+  fill: #fff;
+  /* Modify this color as needed */
+}
+
+#LogoSVG path:nth-child(8) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+}
+
+#LogoSVG:hover path:nth-child(8) {
+  stroke-dasharray: 100px;
+  /* Modify this value as needed */
+  fill: #fff;
+  /* Modify this color as needed */
+}
+
+#LogoSVG path:nth-child(9) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+}
+
+#LogoSVG:hover path:nth-child(9) {
+  stroke-dasharray: 100px;
+  /* Modify this value as needed */
+  fill: #fff;
+  /* Modify this color as needed */
+}
+
+#LogoSVG path:nth-child(10) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+}
+
+#LogoSVG:hover path:nth-child(10) {
+  stroke-dasharray: 100px;
+  /* Modify this value as needed */
+  fill: #fff;
+  /* Modify this color as needed */
+}
+
+#LogoSVG path:nth-child(11) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+}
+
+#LogoSVG:hover path:nth-child(11) {
+  stroke-dasharray: 100px;
+  /* Modify this value as needed */
+  fill: #fff;
+  /* Modify this color as needed */
+}
+
+#LogoSVG path:nth-child(12) {
+  stroke-dasharray: 0;
+  fill: transparent;
+  transition: stroke-dasharray 1.7s ease-in-out, fill 2s ease-in-out;
+  animation-delay: 0.6s;
+}
+
+#LogoSVG:hover path:nth-child(12) {
+  stroke-dasharray: 100px;
+  /* Modify this value as needed */
+  fill: #fff;
+  /* Modify this color as needed */
+}
+
+.mainLogo{
+  text-align: center;
+  color: #fff;
+  height: 1px;
+  background-color: #000;
+  padding-top: 15px;
+  letter-spacing: 15px;
+}
+
+@media (min-width: 640px){
+  .sm\:container{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width: 640px){
+    .sm\:container{
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px){
+    .sm\:container{
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px){
+    .sm\:container{
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px){
+    .sm\:container{
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px){
+    .sm\:container{
+      max-width: 1536px;
+    }
+  }
+}
+
+@media (min-width: 768px){
+  .md\:container{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width: 640px){
+    .md\:container{
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px){
+    .md\:container{
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px){
+    .md\:container{
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px){
+    .md\:container{
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px){
+    .md\:container{
+      max-width: 1536px;
+    }
+  }
+}
+
+@media (min-width: 1024px){
+  .lg\:container{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width: 640px){
+    .lg\:container{
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px){
+    .lg\:container{
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px){
+    .lg\:container{
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px){
+    .lg\:container{
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px){
+    .lg\:container{
+      max-width: 1536px;
+    }
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:container{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width: 640px){
+    .xl\:container{
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px){
+    .xl\:container{
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px){
+    .xl\:container{
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px){
+    .xl\:container{
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px){
+    .xl\:container{
+      max-width: 1536px;
+    }
+  }
+}
+
+@media (min-width: 1536px){
+  .\32xl\:container{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width: 640px){
+    .\32xl\:container{
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px){
+    .\32xl\:container{
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px){
+    .\32xl\:container{
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px){
+    .\32xl\:container{
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px){
+    .\32xl\:container{
+      max-width: 1536px;
+    }
+  }
+}
+
+.selection\:rounded *::-moz-selection{
+  border-radius: 0.25rem;
+}
+
+.selection\:rounded *::selection{
+  border-radius: 0.25rem;
+}
+
+.selection\:rounded::-moz-selection{
+  border-radius: 0.25rem;
+}
+
+.selection\:rounded::selection{
+  border-radius: 0.25rem;
+}
+
+.hover\:bg-indigo-600:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(79 70 229 / var(--tw-bg-opacity));
+}
+
+.focus\:border-indigo-500:focus{
+  --tw-border-opacity: 1;
+  border-color: rgb(99 102 241 / var(--tw-border-opacity));
+}
+
+.focus\:outline-none:focus{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus\:ring-2:focus{
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus\:ring-indigo-200:focus{
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(199 210 254 / var(--tw-ring-opacity));
+}
+
+@media (min-width: 640px){
+  .sm\:mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sm\:mr-10{
+    margin-right: 2.5rem;
+  }
+
+  .sm\:grid{
+    display: grid;
+  }
+
+  .sm\:w-9{
+    width: 2.25rem;
+  }
+
+  .sm\:grid-cols-1{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .sm\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:flex-nowrap{
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 768px){
+  .md\:mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .md\:ml-auto{
+    margin-left: auto;
+  }
+
+  .md\:mt-0{
+    margin-top: 0px;
+  }
+
+  .md\:grid{
+    display: grid;
+  }
+
+  .md\:w-1\/2{
+    width: 50%;
+  }
+
+  .md\:w-1\/3{
+    width: 33.333333%;
+  }
+
+  .md\:w-14{
+    width: 3.5rem;
+  }
+
+  .md\:grid-cols-1{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px){
+  .lg\:mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .lg\:grid{
+    display: grid;
+  }
+
+  .lg\:w-1\/2{
+    width: 50%;
+  }
+
+  .lg\:w-1\/3{
+    width: 33.333333%;
+  }
+
+  .lg\:w-14{
+    width: 3.5rem;
+  }
+
+  .lg\:w-2\/3{
+    width: 66.666667%;
+  }
+
+  .lg\:grid-cols-1{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .xl\:grid{
+    display: grid;
+  }
+
+  .xl\:w-14{
+    width: 3.5rem;
+  }
+
+  .xl\:grid-cols-1{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .xl\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .xl\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1536px){
+  .\32xl\:w-14{
+    width: 3.5rem;
+  }
+
+  .\32xl\:grid-cols-1{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .\32xl\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .\32xl\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+ 
