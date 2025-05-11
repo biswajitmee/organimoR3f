@@ -3,7 +3,8 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Gltf, ScrollControls, useScroll, Scroll } from "@react-three/drei";
 import { getProject, val } from "@theatre/core";
 import theatreeBBState from "./theatreState.json";
-  
+  import GroundWater from "./GroundWater";
+  import Water from "./Water";
 import {
   editable as e,
   SheetProvider,
@@ -11,12 +12,9 @@ import {
   useCurrentSheet,
 } from "@theatre/r3f";
 
-// import studio from "@theatre/studio";
-// import extension from "@theatre/r3f/dist/extension";
-// studio.initialize();
-// studio.extend(extension);
  
-import BreakCode from "./BreakCode";
+ 
+ 
  
  
 
@@ -79,8 +77,14 @@ function Scene() {
       <e.pointLight theatreKey="LightBlue" position={[0, 0, 1]} />
       <e.pointLight theatreKey="LightPurple" position={[0, 0, -2]} />
       <e.pointLight theatreKey="LightWhite" position={[-1, 0, -1]} />
-      <e.mesh theatreKey="BreakCode" position={[0, 0, -1]}>
-        <BreakCode />
+       
+
+
+<e.mesh theatreKey="GroundWater" position={[0, 0, -1]}>
+    <GroundWater/>
+      </e.mesh>
+      <e.mesh theatreKey="Water" position={[0, 0, -1]}>
+    <Water timeSpeed={1} />
       </e.mesh>
 
       <PerspectiveCamera
