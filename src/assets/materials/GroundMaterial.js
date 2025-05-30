@@ -1,8 +1,8 @@
 import { useFrame, useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useRef } from 'react';
-import causticsVertexShader from '../shaders/caustics.vert?raw';
-import causticsFragmentShader from '../shaders/caustics.frag?raw';
+import causticsVertexShader from '../shaders/groundWater.vert?raw';
+import causticsFragmentShader from '../shaders/groundWater.frag?raw';
 import textureUrl from '../assets/ground.jpg'; // Replace with your texture path
 
 export default function GroundWater() {

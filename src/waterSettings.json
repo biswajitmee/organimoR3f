@@ -1,0 +1,22 @@
+{
+    "uWavesAmplitude": 0.0195652174,
+    "uWavesSpeed": 0.40,
+    "uWavesFrequency": 0.34782,
+    "uWavesPersistence": 0.37,
+    "uWavesLacunarity": 2.18,
+    "uWavesIterations": 8,
+    "uOpacity": 0.80,
+    "uPeakColor": [1, 1, 1],
+    "uSurfaceColor":[1, 1, 1],
+    "uTroughColor": [1, 1, 3],
+    "uPeakThreshold": 0.08,
+    "uPeakTransition": 0.05,
+    "uTroughThreshold": -0.01,
+    "uTroughTransition": 0.15 ,
+    "uFresnelScale": 0.80,
+    "uFresnelPower": 0.50
+  }
+  
+
+
+ 

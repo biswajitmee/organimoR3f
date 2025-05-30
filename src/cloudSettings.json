@@ -1,0 +1,14 @@
+{
+  "seed": 1234,
+  "segments": 60,
+  "bounds": [100, 2, 2],
+  "concentrate": "inside",
+  "scale": [1, 1, 1],
+  "volume": 5,
+  "smallestVolume": 0.3,
+  "growth": 10,
+  "speed": 0,
+  "fade": 15,
+  "opacity": 0.8,
+  "color": "#ff0000"
+}

@@ -1,10 +1,18 @@
 import React, { useRef, useMemo, useEffect } from 'react';
 import { useThree, useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
 import { CubeTextureLoader } from 'three';
 import waterVertexShader from './assets/shaders/water.vert?raw';
 import waterFragmentShader from './assets/shaders/water.frag?raw';
+import waterSettings from './waterSettings.json';
+ 
 
-export default function Water({ timeSpeed = 1 }) {
+export default function Water({
+  timeSpeed = 1,
+  onMeshReady,
+  position = [0, 0, 0],
+  reflectionTexture // 👈 make sure you accept this prop
+}) {
   const ref = useRef();
   const { gl, scene } = useThree();
 
@@ -20,53 +28,50 @@ export default function Water({ timeSpeed = 1 }) {
     return texture;
   }, [gl]);
 
-  // Set scene environment (for reflection/light matching)
   useEffect(() => {
-    scene.environment = envMap;      // for realistic lighting/reflections
-    // scene.background = envMap;   // uncomment if you want skybox background
+    scene.environment = envMap;
   }, [envMap, scene]);
 
-  // Shader uniforms
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
-    uWavesAmplitude: { value: 0.025 },
-    uWavesSpeed: { value: 0.40 },
-    uWavesFrequency: { value: 1.07 },
-    uWavesPersistence: { value: 0.30 },
-    uWavesLacunarity: { value: 2.18 },
-    uWavesIterations: { value: 8 },
-
-    uOpacity: { value: 0.80 },
-    uPeakColor: { value: [0.50, 0.69, 0.75] },
-    uSurfaceColor: { value: [0.33, 0.69, 0.53] },
-    uTroughColor: { value: [0.01, 0.13, 0.28] },
-
-    uPeakThreshold: { value: 0.08 },
-    uPeakTransition: { value: 0.05 },
-    uTroughThreshold: { value: -0.01 },
-    uTroughTransition: { value: 0.15 },
-
-    uFresnelScale: { value: 0.80 },
-    uFresnelPower: { value: 0.50 },
-
+    uWavesAmplitude: { value: waterSettings.uWavesAmplitude },
+    uWavesSpeed: { value: waterSettings.uWavesSpeed },
+    uWavesFrequency: { value: waterSettings.uWavesFrequency },
+    uWavesPersistence: { value: waterSettings.uWavesPersistence },
+    uWavesLacunarity: { value: waterSettings.uWavesLacunarity },
+    uWavesIterations: { value: waterSettings.uWavesIterations },
+    uOpacity: { value: waterSettings.uOpacity },
+    uPeakColor: { value: new THREE.Color(...waterSettings.uPeakColor) },
+    uSurfaceColor: { value: new THREE.Color(...waterSettings.uSurfaceColor) },
+    uTroughColor: { value: new THREE.Color(...waterSettings.uTroughColor) },
+    uPeakThreshold: { value: waterSettings.uPeakThreshold },
+    uPeakTransition: { value: waterSettings.uPeakTransition },
+    uTroughThreshold: { value: waterSettings.uTroughThreshold },
+    uTroughTransition: { value: waterSettings.uTroughTransition },
+    uFresnelScale: { value: waterSettings.uFresnelScale },
+    uFresnelPower: { value: waterSettings.uFresnelPower },
     uEnvironmentMap: { value: envMap },
+    uReflectionMap: { value: reflectionTexture || envMap },
   }), [envMap]);
 
-  // Animate time
-  useFrame((_, delta) => {
-    if (ref.current) {
-      ref.current.material.uniforms.uTime.value += delta * timeSpeed;
+  useEffect(() => {
+    if (ref.current && onMeshReady) {
+      onMeshReady(ref.current);
     }
+  }, [ref, onMeshReady]);
+
+  useFrame((_, delta) => {
+    uniforms.uTime.value += delta * timeSpeed;
   });
 
   return (
-    <mesh ref={ref} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-      <planeGeometry args={[20, 10, 512, 512]} />
+    <mesh ref={ref} rotation={[-Math.PI / 2, 0, 0]} position={position}>
+      <planeGeometry args={[900, 900, 512, 512]} />
       <shaderMaterial
         vertexShader={waterVertexShader}
         fragmentShader={waterFragmentShader}
         uniforms={uniforms}
-        transparent={true}
+        transparent
       />
     </mesh>
   );

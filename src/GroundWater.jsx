@@ -1,8 +1,8 @@
 import { useFrame, useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useRef } from 'react';
-import causticsVertexShader from './assets/shaders/caustics.vert?raw';
-import causticsFragmentShader from './assets/shaders/caustics.frag?raw';
+import causticsVertexShader from './assets/shaders/groundWater.vert?raw';
+import causticsFragmentShader from './assets/shaders/groundWater.frag?raw';
 import textureUrl from './assets/shaders/ocean_floor.png'; // Replace with your texture path
  
 
@@ -37,10 +37,10 @@ export default function GroundWater() {
       ref={meshRef}
       material={shaderMaterial}
       rotation={[-Math.PI / 2, 0, 0]}
-      position={[0, -5, 0]}
+      position={[0, -1, 0]}
     >
       {/* <planeGeometry args={[10, 10]} /> */}
-       <planeGeometry args={[20, 10, 512, 512]} />
+       <planeGeometry args={[1200, 1200, 512, 512]} />
     </mesh>
   );
 }
