@@ -1,12 +1,14 @@
-import React ,{useEffect} from 'react'
+import React ,{useEffect,useRef} from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useLoader } from '@react-three/fiber'
-import { TextureLoader } from 'three'
+import { TextureLoader, Box3, Vector3, Group } from 'three'
+
 import * as THREE from 'three'
 
 export function RockStone(props) {
   const { nodes, materials } = useGLTF('/Rock-Product.glb')
   const stoneTexture = useLoader(TextureLoader, '/textures/rock-texture.jpg')
+  const groupRef = useRef()
 
 
     useEffect(() => {
@@ -20,8 +22,22 @@ export function RockStone(props) {
   }, [materials, stoneTexture])
 
 
+  // Centering logic
+  useEffect(() => {
+    if (!groupRef.current) return
+
+    const box = new Box3().setFromObject(groupRef.current)
+    const center = new Vector3()
+    box.getCenter(center)
+
+    groupRef.current.position.sub(center) // move visual contents so that center becomes local origin
+  }, [])
+
+
   return (
     <group {...props} dispose={null}>
+
+ <group ref={groupRef}>
       <group position={[-1.587, 1.178, 5.861]} rotation={[-Math.PI / 2, 0, 0]}>
         <mesh
           castShadow
@@ -552,6 +568,7 @@ export function RockStone(props) {
           scale={[1.949, 1.652, 1.324]}
         />
       </group>
+    </group>
     </group>
   )
 }

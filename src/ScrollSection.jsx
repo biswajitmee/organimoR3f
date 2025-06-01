@@ -30,6 +30,7 @@ import UnderwaterCylinder from './UnderwaterCylinderScene'
 import { RockStone } from './RockStone'
 import { Product } from './Product'
 import { MovingSpot } from './MovingSpot'
+
 // import studio from '@theatre/studio'
 // import extension from '@theatre/r3f/dist/extension'
 
@@ -58,7 +59,7 @@ export default function ScrollSection () {
         style={{ width: '100vw', height: '100vh', backgroundColor: '#000' }}
         gl={{ preserveDrawingBuffer: true }}
       >
-        <ScrollControls pages={pages} distance={2} damping={0.5}>
+        <ScrollControls pages={pages} distance={3} damping={0.8}>
           <SheetProvider sheet={sheet}>
             <Scene />
           </SheetProvider>
@@ -123,6 +124,21 @@ function Scene () {
     color: '#f1f1f1'
   }
 
+    const cloudConfig4 = {
+    seed: 3034,
+    segments: 30,
+    bounds: [3, 3, 3],
+    concentrate: 'outside',
+    scale: [20, 20,14],
+    volume: 8,
+    smallestVolume: 0.3,
+    growth: 2,
+    speed: 0,
+     fade: 15,
+    opacity: 0.4,
+    color: '#f1f1f1'
+  }
+
   return (
     <>
       <directionalLight
@@ -180,7 +196,14 @@ function Scene () {
         />
       </e.mesh>
 
-
+     <e.mesh theatreKey='Cloude R3F 4' position={[0, 0, -1]}>
+        <Cloud
+          {...cloudConfig4}
+          speed={0.3}
+          depthWrite={false}
+          seed={3078} 
+        />
+      </e.mesh>
 
       <PerspectiveCamera
         position={[0, 0, 0]}
