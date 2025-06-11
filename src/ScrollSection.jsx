@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { useState } from 'react'
+import { useState, useEffect,useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import {
   ScrollControls,
@@ -21,7 +21,6 @@ import {
   useCurrentSheet
 } from '@theatre/r3f'
 
-
 import { FogWallCircle } from './FogWallCircle'
 import RoundedImage from './RoundedImage'
 import { CookieLight, CookieLightPlane } from './CookieLight'
@@ -30,12 +29,16 @@ import UnderwaterCylinder from './UnderwaterCylinderScene'
 import { RockStone } from './RockStone'
 import { Product } from './Product'
 import { MovingSpot } from './MovingSpot'
+import CloudShader from './CloudeShader'
+import CloudeGradiantShader from './CloudeGradiantShader'
 
-// import studio from '@theatre/studio'
-// import extension from '@theatre/r3f/dist/extension'
 
-//  studio.initialize()
-//   studio.extend(extension)
+
+//  import studio from '@theatre/studio'
+//   import extension from '@theatre/r3f/dist/extension'
+
+  // studio.initialize()
+  // studio.extend(extension)
 
 export default function ScrollSection () {
   const sheet = getProject('myProject', { state: theatreeBBState }).sheet(
@@ -43,7 +46,7 @@ export default function ScrollSection () {
   )
   const [mouse, setMouse] = useState([0, 0])
   const handleMouseMove = event => setMouse([event.clientX, event.clientY])
-
+const canvasHovered = useRef(false)
   const isMobile = window.innerWidth <= 768
   const pages = isMobile ? 9 : 8.5
 
@@ -51,17 +54,20 @@ export default function ScrollSection () {
     <div
       style={{ height: '100vh', overflow: 'hidden' }}
       onMouseMove={handleMouseMove}
+
+      onMouseEnter={() => (canvasHovered.current = true)}
+  onMouseLeave={() => (canvasHovered.current = false)}
     >
       <Canvas
         onCreated={({ scene }) => {
-          scene.fog = new THREE.Fog('#FA8999', 1200, 1500)
+          scene.fog = new THREE.Fog('#FA8999', 3000, 3500)
         }}
         style={{ width: '100vw', height: '100vh', backgroundColor: '#000' }}
         gl={{ preserveDrawingBuffer: true }}
       >
-        <ScrollControls pages={pages} distance={3} damping={0.8}>
+        <ScrollControls pages={pages} distance={2} damping={0.8}>
           <SheetProvider sheet={sheet}>
-            <Scene />
+            <Scene canvasHovered={canvasHovered} />
           </SheetProvider>
           <Scroll html style={{ position: 'absolute', width: '100vw' }} />
         </ScrollControls>
@@ -74,69 +80,53 @@ export default function ScrollSection () {
 function Scene () {
   const sheet = useCurrentSheet()
   const scroll = useScroll()
+   
+ 
 
-  useFrame(() => {
-    const sequenceLength = val(sheet.sequence.pointer.length)
-    sheet.sequence.position = scroll.offset * sequenceLength
-  })
+ 
+
+useFrame(() => {
+  const sequenceLength = val(sheet.sequence.pointer.length)
+  sheet.sequence.position = scroll.offset * sequenceLength
+
+ 
+})
+
+
+
+
+
 
   const cloudConfig = {
-    seed: 3234,
+    seed: 3400,
     segments: 20,
-    bounds: [2, 2, 2],
+    bounds: [6, 2, 4],
     concentrate: 'outside',
-   scale: [26, 28, 26],
-    volume: 8,
-    smallestVolume: 0.3,
-    growth: 2,
-    speed: 0.2,
-    fade: 15,
-    opacity: 0.8,
-    color: '#f1f1f1'
-  }
-  const cloudConfig2 = {
-    seed: 2034,
-    segments: 20,
-    bounds: [2, 2, 2],
-    concentrate: 'outside',
-    scale: [16, 18,16],
-    volume: 8,
-    smallestVolume: 0.3,
-    growth: 2,
-    speed: 0.2,
-     fade: 15,
-    opacity: 0.8,
-    color: '#f1f1f1'
+    scale: [30, 20, 10],
+    volume: 10,
+    smallestVolume: 0.2,
+    growth: 30,
+    speed: 0.05,
+    fade: 10,
+    opacity: 0.7,
+    color: '#f3f0ee'
   }
 
-    const cloudConfig3 = {
-    seed: 3034,
-    segments: 20,
-    bounds: [2, 2, 2],
-    concentrate: 'outside',
-    scale: [26, 28,26],
-    volume: 8,
-    smallestVolume: 0.3,
-    growth: 2,
-    speed: 0.2,
-     fade: 15,
-    opacity: 0.8,
-    color: '#f1f1f1'
-  }
 
-    const cloudConfig4 = {
-    seed: 3034,
+
+  const cloudConfig4 = {
+    seed: 5000,
     segments: 30,
-    bounds: [3, 3, 3],
+    bounds: [4, 4, 4],
     concentrate: 'outside',
-    scale: [20, 20,14],
-    volume: 8,
+    scale: [40, 10, 5],
+    volume: 10,
     smallestVolume: 0.3,
-    growth: 2,
+    growth: 5,
     speed: 0,
-     fade: 15,
+    fade: 0,
     opacity: 0.4,
-    color: '#f1f1f1'
+    color: '#ffffff'
   }
 
   return (
@@ -168,45 +158,69 @@ function Scene () {
         </CubeCamera>
       </e.mesh>
 
-      <e.mesh theatreKey='Cloude R3F' position={[0, 0, -1]}>
+     {/* <e.mesh theatreKey='Cloude R3F 1' position={[0, 0, -1]}>
         <Cloud
           {...cloudConfig}
-          position={[-4, -2, -25]}
-          speed={0.3}
+          position={[-24, 108, -49]}
+          speed={0.05}
+          opacity={1}
+        />
+      </e.mesh> */}
+          {/* <e.mesh theatreKey='Cloude R3F 11' position={[0, 0, -1]}>
+        <Cloud
+          {...cloudConfig4}
+          position={[-24, 108, -49]}
+          speed={0.05}
+          opacity={1}
+        />
+      </e.mesh> */}
+
+    {/* 
+    
+      <e.mesh theatreKey='Cloude R3F 1' position={[0, 0, -1]}>
+        <Cloud
+          {...cloudConfig}
+          position={[-24, 108, -49]}
+          speed={0.05}
           opacity={1}
         />
       </e.mesh>
+      
+      
 
       <e.mesh theatreKey='Cloude R3F 2' position={[0, 0, -1]}>
         <Cloud
           {...cloudConfig2}
+          position={[-4, -2, -25]}
           speed={0.3}
-          depthWrite={false}
-          seed={2078}
-          
+          opacity={1}
         />
-      </e.mesh>
+      </e.mesh> */}
 
-       <e.mesh theatreKey='Cloude R3F 3' position={[0, 0, -1]}>
-        <Cloud
-          {...cloudConfig3}
-          speed={0.3}
-          depthWrite={false}
-          seed={2078} 
-        />
-      </e.mesh>
+      {/* <e.mesh theatreKey='Cloude R3F 4' position={[0, 0, -1]}>
+        <Cloud {...cloudConfig4} speed={0.5} depthWrite={false} seed={3078} />
+      </e.mesh> */}
 
-     <e.mesh theatreKey='Cloude R3F 4' position={[0, 0, -1]}>
-        <Cloud
-          {...cloudConfig4}
-          speed={0.3}
-          depthWrite={false}
-          seed={3078} 
-        />
-      </e.mesh>
+
+       <e.mesh theatreKey='Cloude shader' position={[0, 0, -1]}>
+ <CloudeGradiantShader  scale={[620, 200, 1]} opacity={0.95}  />
+</e.mesh>
+
+<e.mesh theatreKey='Cloude shader back' position={[0, 0, -1]}>
+ <CloudShader  scale={[120, 60, 1]} opacity={0.45}  />
+</e.mesh>
+   
+<e.mesh theatreKey='Cloude shader front' position={[0, 0, -1]}>
+ <CloudShader scale={[240, 120, 1]} opacity={0.50}  />
+</e.mesh>
+
+{/* <e.mesh theatreKey='Cloude shader 2' position={[0, 0, -1]}>
+ <CloudShader scale={[240, 120, 1]} opacity={0.50}  />
+</e.mesh> */}
 
       <PerspectiveCamera
-        position={[0, 0, 0]}
+        
+        position={[0, 370, 475]}
         theatreKey='Camera'
         makeDefault
         near={5}
@@ -228,19 +242,22 @@ function Scene () {
 
       <CookieLight position={[2, 6, 1]} />
 
-<group>
-  <e.mesh theatreKey='RockStone' position={[0, 0, -1]}>
-    <RockStone scale={15} />
-  </e.mesh>
+      <group>
+        <e.mesh theatreKey='RockStone' position={[-24, 100, -49]}>
+          <RockStone scale={15} />
+        </e.mesh>
 
-  <e.mesh theatreKey='Product' position={[0, 0, -1]}>
-    <Product scale={16} />
-  </e.mesh>
+        <e.mesh theatreKey='Product' position={[0, 0, -1]}>
+          <Product scale={16} />
+        </e.mesh>
 
-  {/* Spotlight pointing to RockStone */}
-  <MovingSpot position={[5, 5, 5]} targetPosition={[0, 0, -1]} color="#ffcc99" />
-</group>
-
+        {/* Spotlight pointing to RockStone */}
+        <MovingSpot
+          position={[5, 5, 5]}
+          targetPosition={[0, 0, -1]}
+          color='#ffcc99'
+        />
+      </group>
     </>
   )
 }

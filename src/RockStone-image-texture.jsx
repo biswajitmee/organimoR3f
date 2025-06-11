@@ -21,16 +21,6 @@ export function RockStone(props) {
     })
   }, [materials, stoneTexture])
 
-useEffect(() => {
-  if (!groupRef.current) return
-
-  const box = new Box3().setFromObject(groupRef.current)
-  const center = new Vector3()
-  box.getCenter(center)
-
-  // This shifts internal contents to origin (0,0,0)
-  groupRef.current.position.sub(center)
-}, [])
 
   // Centering logic
   useEffect(() => {
