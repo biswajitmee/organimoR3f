@@ -53,6 +53,7 @@ const vertexShader = `
 
 // Fragment Shader with depth fading
 const fragmentShader = `
+
 varying vec2 vUv;
 uniform float uTime;
 uniform vec3 uColor1; // Top

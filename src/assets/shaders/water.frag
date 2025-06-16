@@ -31,6 +31,10 @@ void main() {
   // Calculate fresnel effect
   float fresnel = uFresnelScale * pow(1.0 - clamp(dot(viewDirection, vNormal), 0.0, 1.0), uFresnelPower);
 
+float topFade = smoothstep(0.7, 1.0, vUv.y);
+alpha *= (1.0 - topFade);
+
+
   // Calculate elevation-based color
   float elevation = vWorldPosition.y;
 

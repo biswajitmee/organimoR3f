@@ -5,9 +5,10 @@ import * as THREE from 'three'
 export default function CloudShader ({
   position = [0, 10, 0],
   scale = [5, 5, 5],
-  color = '#f1f1f1',
+  rotation = [0, 0, 0],
+  color = '#ecd8eb',
   opacity = 0.5,
-  speed = 0.9
+  speed = 1.9
 }) {
   const mesh = useRef()
   const shaderMaterial = useRef()
@@ -19,9 +20,8 @@ export default function CloudShader ({
   })
 
   return (
-    <mesh ref={mesh} position={position} scale={scale}>
-      <planeGeometry args={[5, 5, 128, 128]} />
-
+    <mesh ref={mesh} position={position} scale={scale} rotation={rotation}>
+      <planeGeometry args={[1, 1, 100, 100]} />
       <shaderMaterial
         ref={shaderMaterial}
         transparent
@@ -29,8 +29,8 @@ export default function CloudShader ({
         side={THREE.DoubleSide}
         uniforms={{
           uTime: { value: 0 },
-          uColor1: { value: new THREE.Color('#f1f1f1') }, // Top color (pinkish)
-          uColor2: { value: new THREE.Color('#ffffff') }, // Bottom color (white)
+          uColor1: { value: new THREE.Color(color) },
+          uColor2: { value: new THREE.Color('#ffffff') },
           uOpacity: { value: opacity },
           uSpeed: { value: speed }
         }}
@@ -41,7 +41,6 @@ export default function CloudShader ({
   )
 }
 
-// Vertex Shader
 const vertexShader = `
   varying vec2 vUv;
   void main() {
@@ -51,7 +50,6 @@ const vertexShader = `
   }
 `
 
-// Fragment Shader with depth fading
 const fragmentShader = `
 varying vec2 vUv;
 uniform float uTime;
@@ -92,20 +90,13 @@ void main() {
   vec2 offset = vec2(uTime * 0.02, uTime * 0.015);
   float fbmNoise = fbm(uv * 3.0 + offset);
 
-  // Shape: soft round blobs around center
   float blobShape = smoothstep(0.6, 0.0, dist - fbmNoise * 0.6);
-
-  // Extra edge softening
   float edgeSoft = smoothstep(0.8, 1.1, dist + fbmNoise * 0.3);
 
-  // Final alpha
   float alpha = blobShape * (1.0 - edgeSoft) * uOpacity;
-
   if (alpha < 0.01) discard;
 
   vec3 color = mix(uColor1, uColor2, vUv.y);
   gl_FragColor = vec4(color, alpha);
 }
-
-
 `

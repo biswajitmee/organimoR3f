@@ -34,10 +34,12 @@ import CloudShader from './CloudeShader'
 import CloudeGradiantShader from './CloudeGradiantShader'
 import InnerShaderCloude from './InnerShaderCloude'
 import { Seashell } from './Seashell'
-import CloudMountain from './CloudMountain'
+
 import studio from '@theatre/studio'
 import extension from '@theatre/r3f/dist/extension'
 import NewWater from './NewWater'
+
+import WaterReflector from './WaterReflector'
 studio.initialize()
 studio.extend(extension)
 
@@ -60,7 +62,7 @@ export default function ScrollSection () {
     >
       <Canvas
         onCreated={({ scene }) => {
-          scene.fog = new THREE.Fog('#FA8999', 10000, 10050)
+          scene.fog = new THREE.Fog('#FA8999', 3000, 3500)
         }}
         style={{ width: '100vw', height: '100vh', backgroundColor: '#000' }}
         gl={{ preserveDrawingBuffer: true }}
@@ -80,6 +82,7 @@ export default function ScrollSection () {
 function Scene () {
   const sheet = useCurrentSheet()
   const scroll = useScroll()
+  const [reflectionTex, setReflectionTex] = useState(null)
 
   useFrame(() => {
     const sequenceLength = val(sheet.sequence.pointer.length)
@@ -125,28 +128,34 @@ function Scene () {
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
       />
- 
+      {/*
+      <e.pointLight theatreKey='LightBlue' position={[0, 0, 1]} />
+      <e.pointLight theatreKey='LightPurple' position={[0, 0, -2]} />
+      <e.pointLight theatreKey='LightWhite' position={[-1, 0, -1]} /> */}
 
       <e.mesh theatreKey='GroundWater' position={[0, -200, 0]}>
         <GroundWater />
       </e.mesh>
 
-      <e.mesh theatreKey='Water' position={[0, -200, 0]}>
-        <Water />
-      </e.mesh>
+       
+{reflectionTex && (
+  <>
+    <e.group theatreKey='WaterGroup' position={[0, -200, 0]}>
+      {/* Reflector follows the water position */}
+      <WaterReflector onUpdate={setReflectionTex} />
+
+      {/* Water shader mesh without its own position */}
+      <Water reflectionTexture={reflectionTex} />
+    </e.group>
+  </>
+)}
 
       <e.mesh theatreKey='Cloude shader' position={[0, 0, -1]}>
         <CloudeGradiantShader scale={[620, 200, 1]} opacity={0.95} />
       </e.mesh>
 
       <e.mesh theatreKey='Cloude shader back' position={[0, 0, -1]}>
-<CloudMountain position={[0,12,0]} color1="#ecd8eb" color2="#fff" opacity={0.18} puffCount={120} seed={1}/>
-<CloudMountain position={[3,11,2]} color1="#faf4ff" color2="#eee" opacity={0.13} puffCount={75} seed={2}/>
-<CloudMountain position={[-2,13,-3]} color1="#e5f6ff" color2="#fff" opacity={0.11} puffCount={60} seed={3}/>
-<CloudMountain position={[1,10,-1]} color1="#fff" color2="#eee" opacity={0.09} puffCount={30} seed={4}/>
-
-
-
+        <CloudShader scale={[80, 40, 1]} opacity={0.65} />
       </e.mesh>
 
       <e.mesh theatreKey='Cloude shader front' position={[0, 0, -1]}>
@@ -166,20 +175,26 @@ function Scene () {
         />
       </e.mesh>
 
-      
+      {/* <e.mesh theatreKey='Cloude shader 2' position={[0, 0, -1]}>
+ <CloudShader scale={[240, 120, 1]} opacity={0.50}  />
+</e.mesh> */}
 
       <PerspectiveCamera
         position={[0, 370, 475]}
         theatreKey='Camera'
         makeDefault
         near={5}
-        far={2000}
+        far={700}
         fov={15}
       />
 
-      <e.mesh theatreKey='Seashell' position={[0, 0, -1]}>
-        <Seashell scale={10} />
-      </e.mesh>
+   <e.group
+  theatreKey="Seashell"
+  position={[0, 0, -1]}
+  onUpdate={(self) => self.traverse(obj => obj.layers.set(1))} // 👈 important!
+>
+  <Seashell scale={10} />
+</e.group>
 
       <e.mesh theatreKey='RoundedImage' position={[0, 0, -1]}>
         <RoundedImage url='/topbackgrund.jpg' position={[0, 0, 0]} />
@@ -193,7 +208,7 @@ function Scene () {
         <UnderwaterCylinder />
       </e.mesh>
 
- 
+      <CookieLight position={[2, 6, 1]} />
 
       <group>
         <e.mesh theatreKey='RockStone' position={[-24, 100, -49]}>
@@ -204,7 +219,12 @@ function Scene () {
           <Product scale={16} />
         </e.mesh>
 
-      
+        {/* Spotlight pointing to RockStone */}
+        <MovingSpot
+          position={[5, 5, 5]}
+          targetPosition={[0, 0, -1]}
+          color='#ffcc99'
+        />
       </group>
     </>
   )

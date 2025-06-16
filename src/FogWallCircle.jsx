@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 
-export function FogWallCircle({ radius = 300, height = 1000, color = '#ffffff', opacity = 0.95 }) {
+export function FogWallCircle({ radius = 1000, height = 1000, color = '#ffffff', opacity = 0.95 }) {
   const wallRef = useRef()
 
   useFrame(() => {
@@ -19,7 +19,7 @@ export function FogWallCircle({ radius = 300, height = 1000, color = '#ffffff', 
       <meshStandardMaterial
         side={THREE.BackSide}
         color={color}
-        transparent
+        
         opacity={opacity}
         fog={true}
       />

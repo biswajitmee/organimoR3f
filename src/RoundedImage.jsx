@@ -11,7 +11,7 @@ export default function RoundedImage({ url = '/file.jpg', ...props }) {
 
   return (
     <mesh {...props}>
-      <roundedPlaneGeometry args={[600, 400, 0.85]} />
+      <roundedPlaneGeometry args={[900, 600, 10]} />
       <meshBasicMaterial map={texture} toneMapped={false} />
     </mesh>
   )
